@@ -10,7 +10,7 @@ def generate_random_int_list(max_length, upper_bound):
     list_length = int(random.uniform(2, max_length))
 
     # given the length above, sample the Natural Numbers up to upper_bound that many times
-    vars = random.sample(range(upper_bound), list_length)
+    nums = random.sample(range(upper_bound), list_length)
 
     # return the generated list
-    return vars
+    return nums
