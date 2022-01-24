@@ -9,6 +9,7 @@ class Operation(Enum):
     MULTIPLY = 3
     DIVIDE = 4
 
+#A silly class to hold the calculator packet information
 class CalculatorPacket:
     def __init__(self, _operator, _operand_A, _operand_B):
        self.operator=_operator
