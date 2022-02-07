@@ -60,14 +60,14 @@ my_counter.inc()
 my_counter.inc()
 my_counter.inc()
 
-print("Counter is ", str(my_counter.get_count()))
+print("Counter is ", my_counter.get_count())
 
 # decrement the counter 3x times. Result should be 2
 my_counter.dec()
 my_counter.dec()
 my_counter.dec()
 
-print("Counter is ", str(my_counter.get_count()))
+print("Counter is ", my_counter.get_count())
 
 # create a new counter and initialize to a random value
 initial_value = random.randint(0, 100)
