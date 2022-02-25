@@ -4,6 +4,14 @@ from covid_point import CovidRecord
 # load covid data as list of CovidRecord objects
 data = load_with_pickle('covid_data.pickle')
 
+# each element in data is a CovidRecord object. Each of which contains
+# date, county, state, fips, cases, and deaths
+
+# for example, we can print out the data for the first point in the US counties file
+point = data[0]
+
+print("Data: ", point.date, " County: ", point.county, " State: ", point.state,
+      " FIPS: ",point.fips, " Cases: ", point.cases, " Deaths: ",point.death)
 
 # write code to address the following question:
 # When was the first positive COVID case in Rockingham County and Harrisonburg?
@@ -17,4 +25,3 @@ data = load_with_pickle('covid_data.pickle')
 # write code to address the following question:
 # In terms of absolute number of cases, when was the rise in cases the fastest over a rolling week window?
 # Over what period was the rise in cases the greatest
-
