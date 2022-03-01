@@ -1,6 +1,5 @@
 import pickle
 
-
 def load_with_pickle(fileName):
     """
     Simple method to load an object from a binary pickle file
@@ -45,6 +44,7 @@ class CovidRecord:
             self.death = int(_death)
 
 
+# all student code goes in the lines below here
 if __name__ == "__main__":
     # load covid data as list of CovidRecord objects
     data = load_with_pickle('covid_data.pickle')
