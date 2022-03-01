@@ -33,7 +33,7 @@ def main(filepath):
     ## your code here
 
     # take the output of the moving average and save it to 'signal' to it can be passed
-    # top the testbench
+    # back to the testbench
     signal = -1
 
     # use find_peaks to identify peaks within averaged/filtered data
