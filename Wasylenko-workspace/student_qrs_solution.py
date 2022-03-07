@@ -1,5 +1,6 @@
 import numpy as np
-from scipy.signal import find_peaks
+#from scipy.signal import find_peaks
+import scipy.signal as sp
 import matplotlib.pyplot as plt
 from ekg_testbench import EKGTestBench
 
@@ -18,15 +19,23 @@ def main(filepath):
     ## your code here
     time = ekg_data[:, 0]
     v1 = ekg_data[:, 2]
+    freq = 1/time[1]
+
     # pass data through LOW PASS FILTER (OPTIONAL)
     ## your code here
+    b_low, a_low = sp.butter(2, 10, 'lowpass', fs=freq)
 
     # pass data through HIGH PASS FILTER (OPTIONAL) to create BAND PASS result
     ## your code here
+    #b_high, a_high = sp.butter(5, freq, 'highpass')
+
+    # filter of the data
+    filter_low = sp.lfilter(b=b_low, a=a_low, x=v1)
+    #filter_high = sp.lfilter()
 
     # pass data through differentiator
     ## your code here
-    diff = np.diff(v1)
+    diff = np.diff(filter_low)
     # pass data through square function
     ## your code here
     fixed_diff = np.insert(diff, 0, 0)
@@ -40,7 +49,11 @@ def main(filepath):
 
     # use find_peaks to identify peaks within averaged/filtered data
     # save the peaks result and return as part of testbench result
-    peaks,_ = find_peaks(signal, height=2, distance=100)
+    max_peak, peak_heights = sp.find_peaks(signal, height=0.01, distance=60)
+    max_height = np.amax(peak_heights)
+    height = (max_height)
+    print(height)
+    peaks,_ = sp.find_peaks(signal, height=height, distance=120)
 
     # do not modify this line
     return signal, peaks
@@ -50,7 +63,7 @@ def main(filepath):
 if __name__ == "__main__":
 
     #database name
-    database_name='mitdb_213'
+    database_name='mitdb_100'
 
     # set to true if you wish to generate a debug file
     file_debug = True
