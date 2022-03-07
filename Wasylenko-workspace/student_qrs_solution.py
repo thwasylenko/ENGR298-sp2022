@@ -53,7 +53,7 @@ def main(filepath):
     #height = (max_height)
     average = np.average(signal)
     max_y = np.amax(signal)
-    height = average / max_y
+    height = (average / max_y) / 2
     print(average, max_y, height)
     peaks,_ = sp.find_peaks(signal, height=height, distance=120)
 
