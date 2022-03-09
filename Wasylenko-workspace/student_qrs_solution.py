@@ -53,7 +53,7 @@ def main(filepath):
     #height = (max_height)
     average = np.average(signal)
     max_y = np.amax(signal)
-    height = (average / max_y) / 2
+    height = np.absolute(((average / max_y) / 2) - (average / 2))
     print(average, max_y, height)
     peaks,_ = sp.find_peaks(signal, height=height, distance=120)
 
@@ -67,7 +67,8 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
     #database name
-    database_name='mitdb_104'
+    database_name='mitdb_220'
+    #database_name ='nstdb_118e06'
 
     # set to true if you wish to generate a debug file
     file_debug = False
@@ -76,7 +77,7 @@ if __name__ == "__main__":
     print_debug = True
 
     # set to true if you wish to show a plot of each detection process
-    show_plot = True
+    show_plot = False
 
     ### DO NOT MODIFY BELOW THIS LINE!!! ###
 
