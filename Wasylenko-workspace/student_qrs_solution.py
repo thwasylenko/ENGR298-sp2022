@@ -70,7 +70,7 @@ if __name__ == "__main__":
     database_name='mitdb_104'
 
     # set to true if you wish to generate a debug file
-    file_debug = True
+    file_debug = False
 
     # set to true if you wish to print overall stats to the screen
     print_debug = True
