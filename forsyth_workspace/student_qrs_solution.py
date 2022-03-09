@@ -38,7 +38,7 @@ def main(filepath):
 
     # use find_peaks to identify peaks within averaged/filtered data
     # save the peaks result and return as part of testbench result
-    peaks = -1 ## your code here
+    peaks, _ = findpeaks(.....)
 
     # do not modify this line
     return signal, peaks
