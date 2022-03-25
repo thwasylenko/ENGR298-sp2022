@@ -225,36 +225,3 @@ if __name__ == "__main__":
 
     plt.legend()
     plt.show()
-
-    ##### calculate yield strength #####
-    # https://professorkazarinoff.github.io/Engineering-Materials-Programming/07-Mechanical-Properties/calculate-yield-strength-programmatically.html
-
-    # next to find point that intersects y=m(x-0.002) + 0
-    offset = 0.002
-
-    # calculate the offset line
-    offset_line = slope * (strain - offset)
-
-    # measure distance from all points on graph to this line
-    distance = abs(stress - offset_line)
-    intercept_index = np.argmin(distance)
-
-    # create line parallel to linear region and find intersection with overall curve
-    plt.scatter(strain, stress, label="Stress - Strain")
-    plt.xlabel('Strain (%)')
-    plt.ylabel('Stress (MPa)')
-    plt.title('Stress-Strain Curve for Sample ' + sample_name + " with 0.2% Yield")
-
-    # plot yield line
-    plt.plot(strain, offset_line, label="0.2% Offset Yield")
-
-    # indicate point where yield intersects
-    plt.plot(strain[intercept_index], stress[intercept_index], marker='v', label="Yield Strength")
-
-    # since this will go on forever, constrain the axis
-    plt.xlim([-.001, max(strain)])
-    plt.ylim([0, 1.1 * max(stress)])
-    plt.legend()
-    plt.show()
-
-    print("Done!")
