@@ -91,41 +91,35 @@ def calculate_elastic_modulus(strain, stress):
         intercept: y-intercept for linear region best fit of strain/stress data
     """
 
-    # dummy variables the function should over write
-    linear_index = None
-    slope = None
-    intercept = None
+    # dummy variables to check that the values are implemented. These should be over-written by your
+    # code throughout this method
+    linear_index = -1
+    slope = -1
+    intercept = -1
 
-    # Step 3a: find the point that is 40% of peak strain
-    # use from 0 to that value to create a linear plot
-
-    ### your code below ###
+    # Step 3a: find the point that is 40% of max strain
+    # replace the line below with your code to find the secant_strain
     secant_strain = -1
 
-    # Step 3b: find the intersection between 40% line and the curvey
-    # take the abs() difference between the stress vector and secant_straint point
+    # Step 3b: find the index closes to that 40%
+    # take the diff of the whole array and use argmin to find the index where the closest
+    # value occurs
 
-    ### your code below ###
-    diffs = -1
+    # uncomment the line below and find the difference between stress and secant across all values
+    # diffs = np.abs(### your code here ###)
 
-    # use np.argmin() to find the minimum of the diffs array.
-    # this will be the INDEX of the point in stress-strain that is closest to
-    # secant_strain intersection
+    # uncomment the line below and use np.argmin on the diffs array to find the index/location of the closest point
+    # linear_index = np.argmin(### your code here ###)
 
-    # uncomment the line below and replace with your own
-    # linear_index = ....
-
-    # Step 3c: down select to linear region for stress and strain
-    # using list slicing. Uncomment lines below
-    # linear_stress = stress[# list slice#]
-    # linear_strain = strain[#list slice#]
+    # Step 3c: down select to linear region for stress and strain using array slicing
+    # uncomment the lines below and use array slicing to select points between 0 and the linear index
+    # linear_stress = ### your code here ###
+    # linear_strain = ### your code here ###
 
     # Step 3d: find least squares fit to a line in the linear region
-    # use 1-degree polynominal fit (line) from np.polyfit
-    # save the slope and intercept so we can plot the line later
-
-    # uncomment the line below and call np.polyfit
-    # slope, intercept = ....
+    # use 1-degree polynominal fit (line)
+    # uncomment the line below and use np.polyfit to determine a best fit for the linear stress/strain regions
+    # slope, intercept = np.polyfit(### x array here ###, ### y array here ###, 1)
 
     return linear_index, slope, intercept
 
@@ -189,8 +183,8 @@ if __name__ == "__main__":
 
     linear_index, slope, intercept = calculate_elastic_modulus(strain, stress)
 
-    if linear_index==None or slope == None or intercept == None:
-        print("Incorrect value determined by calculate_elastic_modulus() did you implement that function?")
+    if linear_index == -1 or slope == -1 or intercept == -1:
+        print("Error! You did not calculate the linear region or index correctly. Check the calculate_elastic_modulus() method.")
         sys.exit(-1)
 
     print("Elastic Modulus is ", slope / 1000, 'GPa')
