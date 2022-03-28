@@ -9,8 +9,8 @@ if __name__ == "__main__":
     # load data into dataframe
     df = pd.read_csv(path_to_file)
 
-    # Approach 1: Parse all columns to get print out a decent table
-    # of all mean +/- std of all materials
+    # print out data frame just for fun
+    print(df)
 
     # get all results from one type
     cold_rolled = df[df['Material_Type'] == '1045CR']
@@ -18,6 +18,18 @@ if __name__ == "__main__":
     stainless_steel = df[df['Material_Type'] == '2024']
 
     plastic = df[df['Material_Type'] == 'PMMA']
+
+    # print out each material type
+    print(cold_rolled)
+
+    print(stainless_steel)
+
+    print(plastic)
+
+
+
+    # Approach 1: Parse all columns to get print out a decent table
+    # of all mean +/- std of all materials
 
     # determine averages/deviations on elastic modulus of each material
     cr_modulus_avg = cold_rolled['Elastic_Modulus'].mean()
@@ -53,3 +65,4 @@ if __name__ == "__main__":
 
     # add some space after the table
     print("\n")
+
